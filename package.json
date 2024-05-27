@@ -1,0 +1,30 @@
+{
+  "name": "tree-as-array",
+  "version": "2.0.11",
+  "description": "Some methods for tree-structured data",
+  "main": "index.js",
+  "types": "treeMethods.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tree",
+    "array",
+    "map",
+    "find",
+    "filter",
+    "push",
+    "unshift"
+  ],
+  "author": "Wang Xiping",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WangXiping1/tree-as-array"
+  },
+  "homepage": "https://github.com/WangXiping1/tree-as-array",
+  "files": [
+    "index.js",
+    "treeMethods.d.ts"
+  ]
+}
