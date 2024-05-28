@@ -115,4 +115,31 @@ export function someTree(trees, predicate) {
     }
   }
   return false; // 如果遍历完所有树都没有找到满足条件的节点，则返回false  
-}  
+}
+
+export function everyTree(trees, predicate) {
+  // 遍历树数组中的每个树根节点  
+  for (let tree of trees) {
+    // 定义一个递归函数来遍历树的节点  
+    function traverse(node) {
+      // 检查当前节点是否满足条件  
+      if (!predicate(node)) {
+        return false; // 如果当前节点不满足条件，立即返回false  
+      }
+      // 如果有子节点，则递归检查它们是否都满足条件  
+      if (node.children) {
+        for (let child of node.children) {
+          if (!traverse(child)) {
+            return false; // 如果任一子节点不满足条件，立即返回false  
+          }
+        }
+      }
+      return true; // 所有检查的节点都满足条件，返回true  
+    }
+    // 对当前树根节点调用递归函数  
+    if (!traverse(tree)) {
+      return false; // 如果任一树根节点或其子节点不满足条件，则立即返回false  
+    }
+  }
+  return true; // 所有树中的所有节点都满足条件，返回true  
+}

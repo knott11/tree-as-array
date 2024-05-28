@@ -1,7 +1,7 @@
 {
   "name": "tree-as-array",
-  "version": "2.3.1",
-  "description": "Some methods for tree-structured data",
+  "version": "2.3.3",
+  "description": "A js library that treats tree structured data as an array",
   "main": "dist/index.min.js",
   "types": "dist/treeMethods.d.ts",
   "scripts": {
@@ -16,7 +16,8 @@
     "filter",
     "push",
     "unshift",
-    "some"
+    "some",
+    "every"
   ],
   "author": "Wang Xiping",
   "license": "MIT",
