@@ -12,13 +12,17 @@ export function mapTree(data, callback, childrenName = 'children') {
   return result;
 };
 
+const filterArr = []
 export function filterTree(tree, filterFn) {
-  return tree
-    .filter(node => filterFn(node))
-    .map(node => ({
-      ...node,
-      children: node.children ? filterTree(node.children, filterFn) : undefined
-    }));
+  for (let node of tree) {
+    if (node.children) {
+      filterTree(node.children, filterFn)
+    }
+    if (filterFn(node)) {
+      filterArr.push(node)
+    }
+  }
+  return filterArr
 }
 
 export function findTree(treeNodes, conditionFn) {
@@ -90,56 +94,33 @@ export function unshiftTree(tree, rootId, newNode) {
   }
 }
 
-export function someTree(trees, predicate) {
-  // 遍历树数组中的每个树根节点  
-  for (let tree of trees) {
-    // 定义一个递归函数来遍历树的节点  
-    function traverse(node) {
-      // 检查当前节点是否满足条件  
-      if (predicate(node)) {
-        return true;
-      }
-      // 如果有子节点，则递归遍历它们  
-      if (node.children) {
-        for (let child of node.children) {
-          if (traverse(child)) {
-            return true;
-          }
-        }
-      }
-      return false;
+let isSome = false
+function someTree(tree, filterFn) {
+  for (let node of tree) {
+    if (node.children) {
+      someTree(node.children, filterFn)
     }
-    // 对当前树根节点调用递归函数  
-    if (traverse(tree)) {
-      return true; // 如果找到满足条件的节点，则立即返回true  
+    if (filterFn(node)) {
+      isSome = true
     }
   }
-  return false; // 如果遍历完所有树都没有找到满足条件的节点，则返回false  
+  return isSome
 }
 
-export function everyTree(trees, predicate) {
-  // 遍历树数组中的每个树根节点  
-  for (let tree of trees) {
-    // 定义一个递归函数来遍历树的节点  
-    function traverse(node) {
-      // 检查当前节点是否满足条件  
-      if (!predicate(node)) {
-        return false; // 如果当前节点不满足条件，立即返回false  
-      }
-      // 如果有子节点，则递归检查它们是否都满足条件  
-      if (node.children) {
-        for (let child of node.children) {
-          if (!traverse(child)) {
-            return false; // 如果任一子节点不满足条件，立即返回false  
-          }
-        }
-      }
-      return true; // 所有检查的节点都满足条件，返回true  
+const isEvery = []
+let treeLength = 0
+export function everyTree(tree, filterFn) {
+  for (let node of tree) {
+    treeLength++
+    if (node.children) {
+      everyTree(node.children, filterFn)
     }
-    // 对当前树根节点调用递归函数  
-    if (!traverse(tree)) {
-      return false; // 如果任一树根节点或其子节点不满足条件，则立即返回false  
+    if (filterFn(node)) {
+      isEvery.push(node)
     }
   }
-  return true; // 所有树中的所有节点都满足条件，返回true  
+  if (treeLength === isEvery.length) {
+    return true
+  }
+  return false
 }

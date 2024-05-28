@@ -3,10 +3,11 @@
 
 #### 安装教程
 yarn add tree-as-array
+npm i tree-as-array
 #### 使用说明
 引入
 ```bash
-import { mapTree, filterTree, findTree, pushTree } from 'tree-as-array'
+import { mapTree, filterTree} from 'tree-as-array'
 ```
 
 mapTree
@@ -50,7 +51,7 @@ console.log(tree)
 
 someTree
 ```bash
-const result = someTree(tree, item => item.name?.includes('jack'))
+const result = someTree(tree, item => item.name === 'jack')
 
 console.log(result)
 ```
