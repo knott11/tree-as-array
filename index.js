@@ -95,7 +95,7 @@ export function unshiftTree(tree, rootId, newNode) {
 }
 
 let isSome = false
-function someTree(tree, filterFn) {
+export function someTree(tree, filterFn) {
   for (let node of tree) {
     if (node.children) {
       someTree(node.children, filterFn)
