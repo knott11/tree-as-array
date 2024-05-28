@@ -1,5 +1,5 @@
 #### 介绍
-用类似数组的方法操作树形结构数据。目前已支持mapTree、filterTree、findTree、pushTree和unshiftTree。
+用类似数组的方法操作树形结构数据。目前已支持mapTree、filterTree、findTree、pushTree、unshiftTree和someTree。
 
 #### 安装教程
 yarn add tree-as-array

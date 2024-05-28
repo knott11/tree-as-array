@@ -1,10 +1,11 @@
 {
   "name": "tree-as-array",
-  "version": "2.2.0",
+  "version": "2.3.1",
   "description": "Some methods for tree-structured data",
-  "main": "index.js",
-  "types": "treeMethods.d.ts",
+  "main": "dist/index.min.js",
+  "types": "dist/treeMethods.d.ts",
   "scripts": {
+    "build": "terser index.js -o dist/index.min.js --compress --mangle",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -25,7 +26,10 @@
   },
   "homepage": "https://github.com/WangXiping1/tree-as-array",
   "files": [
-    "index.js",
-    "treeMethods.d.ts"
-  ]
+    "dist/index.js",
+    "dist/treeMethods.d.ts"
+  ],
+  "devDependencies": {
+    "terser": "^5.31.0"
+  }
 }

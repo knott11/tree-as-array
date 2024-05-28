@@ -13,16 +13,12 @@ export function mapTree(data, callback, childrenName = 'children') {
 };
 
 export function filterTree(tree, filterFn) {
-  return tree.filter((node) => {
-    const includeNode = filterFn(node);
-
-    if (includeNode && node.children) {
-      // 如果节点应该被包含，并且它有子节点，那么递归地过滤子节点
-      node.children = filterTree(node.children, filterFn);
-    }
-
-    return includeNode;
-  });
+  return tree
+    .filter(node => filterFn(node))
+    .map(node => ({
+      ...node,
+      children: node.children ? filterTree(node.children, filterFn) : undefined
+    }));
 }
 
 export function findTree(treeNodes, conditionFn) {
@@ -94,29 +90,29 @@ export function unshiftTree(tree, rootId, newNode) {
   }
 }
 
-export function someTree(trees, predicate) {  
+export function someTree(trees, predicate) {
   // 遍历树数组中的每个树根节点  
-  for (let tree of trees) {  
-      // 定义一个递归函数来遍历树的节点  
-      function traverse(node) {  
-          // 检查当前节点是否满足条件  
-          if (predicate(node)) {  
-              return true;  
-          }  
-          // 如果有子节点，则递归遍历它们  
-          if (node.children) {  
-              for (let child of node.children) {  
-                  if (traverse(child)) {  
-                      return true;  
-                  }  
-              }  
-          }  
-          return false;  
-      }  
-      // 对当前树根节点调用递归函数  
-      if (traverse(tree)) {  
-          return true; // 如果找到满足条件的节点，则立即返回true  
-      }  
-  }  
+  for (let tree of trees) {
+    // 定义一个递归函数来遍历树的节点  
+    function traverse(node) {
+      // 检查当前节点是否满足条件  
+      if (predicate(node)) {
+        return true;
+      }
+      // 如果有子节点，则递归遍历它们  
+      if (node.children) {
+        for (let child of node.children) {
+          if (traverse(child)) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+    // 对当前树根节点调用递归函数  
+    if (traverse(tree)) {
+      return true; // 如果找到满足条件的节点，则立即返回true  
+    }
+  }
   return false; // 如果遍历完所有树都没有找到满足条件的节点，则返回false  
 }  
