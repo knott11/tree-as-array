@@ -6,7 +6,7 @@ yarn add tree-as-array
 #### 使用说明
 引入
 ```bash
-import { mapTree, filterTree, findTree, pushTree, unshiftTree } from 'tree-as-array'
+import { mapTree, filterTree, findTree, pushTree, unshiftTree, someTree } from 'tree-as-array'
 ```
 
 mapTree
@@ -46,4 +46,11 @@ unshiftTree(targetParentId为根节点的id，newNode为往该根节点添加的
 unshiftTree(tree, targetParentId, newNode);
 
 console.log(tree)
+```
+
+someTree
+```bash
+const result = someTree(tree, item => item.name?.includes('jack'))
+
+console.log(result)
 ```

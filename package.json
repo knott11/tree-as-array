@@ -1,6 +1,6 @@
 {
   "name": "tree-as-array",
-  "version": "2.0.11",
+  "version": "2.2.0",
   "description": "Some methods for tree-structured data",
   "main": "index.js",
   "types": "treeMethods.d.ts",
@@ -14,7 +14,8 @@
     "find",
     "filter",
     "push",
-    "unshift"
+    "unshift",
+    "some"
   ],
   "author": "Wang Xiping",
   "license": "MIT",
