@@ -1,5 +1,5 @@
 #### 介绍
-用类似数组的方法操作树形结构数据。目前已支持mapTree、filterTree、findTree、pushTree、unshiftTree、someTree、everyTree、atTree和特殊方法nodeDepthMap。
+用类似数组的方法操作树形结构数据。目前已支持mapTree、filterTree、findTree、pushTree、unshiftTree、someTree、everyTree、atTree和特殊方法nodeDepthMap。(推荐安装最新版本)
 
 #### 安装教程
 ```bash
