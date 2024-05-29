@@ -1,9 +1,12 @@
 #### 介绍
-用类似数组的方法操作树形结构数据。目前已支持mapTree、filterTree、findTree、pushTree、unshiftTree、someTree和everyTree。
+用类似数组的方法操作树形结构数据。目前已支持mapTree、filterTree、findTree、pushTree、unshiftTree、someTree、everyTree和atTree。
 
 #### 安装教程
+```bash
 yarn add tree-as-array
 npm i tree-as-array
+```
+
 #### 使用说明
 引入
 ```bash
@@ -35,14 +38,14 @@ const result = findTree(tree, (item) => {
 console.log(result)
 ```
 
-pushTree(targetParentId为根节点的id，newNode为往该根节点添加的数据)
+pushTree(targetParentId为目标节点的id，newNode为往该节点添加的数据)
 ```bash
 pushTree(tree, targetParentId, newNode);
 
 console.log(tree)
 ```
 
-unshiftTree(targetParentId为根节点的id，newNode为往该根节点添加的数据)
+unshiftTree(targetParentId为目标节点的id，newNode为往该节点添加的数据)
 ```bash
 unshiftTree(tree, targetParentId, newNode);
 
@@ -59,6 +62,13 @@ console.log(result)
 everyTree
 ```bash
 const result = everyTree(tree, item => item.age >= 18)
+
+console.log(result)
+```
+
+atTree(parentId为指定父节点的id，nodeIndex为子节点的索引，可传负数，和数组的at方法一样)
+```bash
+const result = atTree(tree, parentId, nodeIndex)
 
 console.log(result)
 ```

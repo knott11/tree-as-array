@@ -27,15 +27,138 @@ const RAW_RUNTIME_STATE =
       [null, {\
         "packageLocation": "./",\
         "packageDependencies": [\
+          ["terser", "npm:5.31.0"]\
         ],\
         "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["@jridgewell/gen-mapping", [\
+      ["npm:0.3.5", {\
+        "packageLocation": "../../../../C:/Users/26822/AppData/Local/Yarn/Berry/cache/@jridgewell-gen-mapping-npm-0.3.5-d8b85ebeaf-10c0.zip/node_modules/@jridgewell/gen-mapping/",\
+        "packageDependencies": [\
+          ["@jridgewell/gen-mapping", "npm:0.3.5"],\
+          ["@jridgewell/set-array", "npm:1.2.1"],\
+          ["@jridgewell/sourcemap-codec", "npm:1.4.15"],\
+          ["@jridgewell/trace-mapping", "npm:0.3.25"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@jridgewell/resolve-uri", [\
+      ["npm:3.1.2", {\
+        "packageLocation": "../../../../C:/Users/26822/AppData/Local/Yarn/Berry/cache/@jridgewell-resolve-uri-npm-3.1.2-5bc4245992-10c0.zip/node_modules/@jridgewell/resolve-uri/",\
+        "packageDependencies": [\
+          ["@jridgewell/resolve-uri", "npm:3.1.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@jridgewell/set-array", [\
+      ["npm:1.2.1", {\
+        "packageLocation": "../../../../C:/Users/26822/AppData/Local/Yarn/Berry/cache/@jridgewell-set-array-npm-1.2.1-2312928209-10c0.zip/node_modules/@jridgewell/set-array/",\
+        "packageDependencies": [\
+          ["@jridgewell/set-array", "npm:1.2.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@jridgewell/source-map", [\
+      ["npm:0.3.6", {\
+        "packageLocation": "../../../../C:/Users/26822/AppData/Local/Yarn/Berry/cache/@jridgewell-source-map-npm-0.3.6-fe0849eb05-10c0.zip/node_modules/@jridgewell/source-map/",\
+        "packageDependencies": [\
+          ["@jridgewell/source-map", "npm:0.3.6"],\
+          ["@jridgewell/gen-mapping", "npm:0.3.5"],\
+          ["@jridgewell/trace-mapping", "npm:0.3.25"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@jridgewell/sourcemap-codec", [\
+      ["npm:1.4.15", {\
+        "packageLocation": "../../../../C:/Users/26822/AppData/Local/Yarn/Berry/cache/@jridgewell-sourcemap-codec-npm-1.4.15-a055fb62cf-10c0.zip/node_modules/@jridgewell/sourcemap-codec/",\
+        "packageDependencies": [\
+          ["@jridgewell/sourcemap-codec", "npm:1.4.15"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@jridgewell/trace-mapping", [\
+      ["npm:0.3.25", {\
+        "packageLocation": "../../../../C:/Users/26822/AppData/Local/Yarn/Berry/cache/@jridgewell-trace-mapping-npm-0.3.25-c076fd2279-10c0.zip/node_modules/@jridgewell/trace-mapping/",\
+        "packageDependencies": [\
+          ["@jridgewell/trace-mapping", "npm:0.3.25"],\
+          ["@jridgewell/resolve-uri", "npm:3.1.2"],\
+          ["@jridgewell/sourcemap-codec", "npm:1.4.15"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["acorn", [\
+      ["npm:8.11.3", {\
+        "packageLocation": "../../../../C:/Users/26822/AppData/Local/Yarn/Berry/cache/acorn-npm-8.11.3-0d7ab48b38-10c0.zip/node_modules/acorn/",\
+        "packageDependencies": [\
+          ["acorn", "npm:8.11.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["buffer-from", [\
+      ["npm:1.1.2", {\
+        "packageLocation": "../../../../C:/Users/26822/AppData/Local/Yarn/Berry/cache/buffer-from-npm-1.1.2-03d2f20d7e-10c0.zip/node_modules/buffer-from/",\
+        "packageDependencies": [\
+          ["buffer-from", "npm:1.1.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["commander", [\
+      ["npm:2.20.3", {\
+        "packageLocation": "../../../../C:/Users/26822/AppData/Local/Yarn/Berry/cache/commander-npm-2.20.3-d8dcbaa39b-10c0.zip/node_modules/commander/",\
+        "packageDependencies": [\
+          ["commander", "npm:2.20.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["source-map", [\
+      ["npm:0.6.1", {\
+        "packageLocation": "../../../../C:/Users/26822/AppData/Local/Yarn/Berry/cache/source-map-npm-0.6.1-1a3621db16-10c0.zip/node_modules/source-map/",\
+        "packageDependencies": [\
+          ["source-map", "npm:0.6.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["source-map-support", [\
+      ["npm:0.5.21", {\
+        "packageLocation": "../../../../C:/Users/26822/AppData/Local/Yarn/Berry/cache/source-map-support-npm-0.5.21-09ca99e250-10c0.zip/node_modules/source-map-support/",\
+        "packageDependencies": [\
+          ["source-map-support", "npm:0.5.21"],\
+          ["buffer-from", "npm:1.1.2"],\
+          ["source-map", "npm:0.6.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["terser", [\
+      ["npm:5.31.0", {\
+        "packageLocation": "../../../../C:/Users/26822/AppData/Local/Yarn/Berry/cache/terser-npm-5.31.0-1d4e526ecb-10c0.zip/node_modules/terser/",\
+        "packageDependencies": [\
+          ["terser", "npm:5.31.0"],\
+          ["@jridgewell/source-map", "npm:0.3.6"],\
+          ["acorn", "npm:8.11.3"],\
+          ["commander", "npm:2.20.3"],\
+          ["source-map-support", "npm:0.5.21"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["tree-as-array", [\
       ["workspace:.", {\
         "packageLocation": "./",\
         "packageDependencies": [\
-          ["tree-as-array", "workspace:."]\
+          ["tree-as-array", "workspace:."],\
+          ["terser", "npm:5.31.0"]\
         ],\
         "linkType": "SOFT"\
       }]\

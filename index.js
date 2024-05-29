@@ -124,3 +124,31 @@ export function everyTree(tree, filterFn) {
   }
   return false
 }
+
+export function atTree(tree, parentId, nodeIndex) {
+  // 遍历树中的每个节点  
+  for (const node of tree) {
+    // 如果找到了对应的父节点  
+    if (node.id === parentId) {
+      // 如果nodeIndex为负数，则将其转换为正数索引  
+      let adjustedNodeIndex = nodeIndex >= 0 ? nodeIndex : node.children.length + nodeIndex;
+
+      // 检查调整后的索引是否在子节点数组的范围内  
+      if (node.children && adjustedNodeIndex >= 0 && adjustedNodeIndex < node.children.length) {
+        // 返回指定索引处的子节点  
+        return node.children[adjustedNodeIndex];
+      } else {
+        // 如果索引无效或没有子节点，则返回null  
+        return null;
+      }
+    }
+    // 如果当前节点有子节点，递归地在子树中查找  
+    if (node.children) {
+      const foundNode = atTree(node.children, parentId, nodeIndex);
+      if (foundNode) {
+        return foundNode; // 如果在子树中找到了，返回找到的节点  
+      }
+    }
+  }
+  return null; // 如果没有找到，返回null  
+}
