@@ -6,6 +6,7 @@ declare module 'tree-as-array' {
   export function unshiftTree<T>(tree: T[], targetParentId: string | number, newNode: {} | {}[]): void;
   export function someTree<T>(trees: T[], predicate: (node: T) => boolean): boolean;
   export function everyTree<T>(trees: T[], predicate: (node: T) => boolean): boolean;
-  export function atTree<T>(tree: T[], parentId: string | number, nodeIndex: number): T | null
-  export function nodeDepthMap<T>(tree: T[]): Record<string | number, number>
+  export function atTree<T>(tree: T[], parentId: string | number, nodeIndex: number): T | null;
+  export function indexOfTree<T>(tree: T[], targetId: string | number): T | null;
+  export function nodeDepthMap<T>(tree: T[]): Record<string | number, number>;
 }

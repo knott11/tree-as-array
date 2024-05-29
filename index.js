@@ -153,6 +153,31 @@ export function atTree(tree, parentId, nodeIndex) {
   return null; // 如果没有找到，返回null  
 }
 
+export function indexOfTree(tree, targetId) {
+  function search(nodes, targetId, path = []) {
+    for (let i = 0; i < nodes.length; i++) {
+      const currentNode = nodes[i];
+      path.push(i); // 将当前索引添加到路径中  
+
+      if (currentNode.id === targetId) {
+        return path; // 找到目标，返回路径  
+      }
+
+      if (currentNode.children) {
+        const result = search(currentNode.children, targetId, path); // 递归搜索子节点  
+        if (result) {
+          return result; // 如果在子节点中找到目标，返回路径  
+        }
+      }
+
+      path.pop(); // 如果没有找到目标，从路径中移除当前节点索引，然后尝试下一个节点  
+    }
+    return null; // 如果遍历完所有节点都没有找到目标，返回null  
+  }
+
+  return search(tree, targetId);
+}
+
 export function nodeDepthMap(tree) {
   const nodeDepths = {}; // 用于存储每个节点的深度  
 
