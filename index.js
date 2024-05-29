@@ -152,3 +152,30 @@ export function atTree(tree, parentId, nodeIndex) {
   }
   return null; // 如果没有找到，返回null  
 }
+
+export function nodeDepthMap(tree) {
+  const nodeDepths = {}; // 用于存储每个节点的深度  
+
+  // 定义一个内部函数，用于递归计算节点的最大深度  
+  function calculateDepth(node, currentDepth) {
+    // 初始化当前节点的深度为1（因为它自身占一层）  
+    let depth = currentDepth || 1;
+
+    // 存储当前节点的深度  
+    nodeDepths[node.id] = depth;
+
+    // 如果有子节点，递归计算它们的深度  
+    if (node.children) {
+      for (const childNode of node.children) {
+        calculateDepth(childNode, depth + 1); // 传递给子节点的深度是当前节点深度+1  
+      }
+    }
+  }
+
+  // 遍历树的每个节点，并计算它们的深度  
+  for (const rootNode of tree) {
+    calculateDepth(rootNode); // 从根节点开始计算深度  
+  }
+
+  return nodeDepths; // 返回节点深度对象  
+}

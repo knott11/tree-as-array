@@ -1,5 +1,5 @@
 #### 介绍
-用类似数组的方法操作树形结构数据。目前已支持mapTree、filterTree、findTree、pushTree、unshiftTree、someTree、everyTree和atTree。
+用类似数组的方法操作树形结构数据。目前已支持mapTree、filterTree、findTree、pushTree、unshiftTree、someTree、everyTree、atTree和特殊方法nodeDepthMap。
 
 #### 安装教程
 ```bash
@@ -69,6 +69,13 @@ console.log(result)
 atTree(parentId为指定父节点的id，nodeIndex为子节点的索引，可传负数，和数组的at方法一样)
 ```bash
 const result = atTree(tree, parentId, nodeIndex)
+
+console.log(result)
+```
+
+nodeDepthMap(返回一个字典，键代表节点的id，值代表该节点在数据的第几层)
+```bash
+const result = nodeDepthMap(tree)
 
 console.log(result)
 ```
