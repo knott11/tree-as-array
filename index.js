@@ -178,6 +178,33 @@ export function indexOfTree(tree, targetId) {
   return search(tree, targetId);
 }
 
+export function atIndexOfTree(tree, path) {  
+  function traverse(nodes, indexPath) {  
+      if (!nodes || indexPath.length === 0) {  
+          return null;  
+      }  
+
+      const index = indexPath[0];  
+      const currentNode = nodes[index];  
+
+      if (!currentNode) {  
+          return null;  
+      }  
+
+      if (indexPath.length === 1) {  
+          return currentNode;  
+      }  
+
+      if (currentNode.children) {  
+          return traverse(currentNode.children, indexPath.slice(1));  
+      }  
+
+      return null;  
+  }  
+
+  return traverse(tree, path);  
+}
+
 export function nodeDepthMap(tree) {
   const nodeDepths = {}; // 用于存储每个节点的深度  
 

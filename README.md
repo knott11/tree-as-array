@@ -1,5 +1,5 @@
 #### 介绍
-用数组的方法操作树形结构数据。目前已支持mapTree、filterTree、findTree、pushTree、unshiftTree、someTree、everyTree、atTree、indexOfTree和特殊方法nodeDepthMap。(推荐安装最新版本)
+用数组的方法操作树形结构数据。目前已支持mapTree、filterTree、findTree、pushTree、unshiftTree、someTree、everyTree、atTree、indexOfTree和特殊方法atIndexOfTree、nodeDepthMap。(推荐安装最新版本)
 
 #### 安装教程
 ```bash
@@ -38,14 +38,14 @@ const result = findTree(tree, (item) => {
 console.log(result)
 ```
 
-pushTree(targetParentId为目标节点的id，newNode为往该节点添加的数据)
+pushTree（targetParentId为目标节点的id，newNode为往该节点添加的数据）
 ```bash
 pushTree(tree, targetParentId, newNode);
 
 console.log(tree)
 ```
 
-unshiftTree(targetParentId为目标节点的id，newNode为往该节点添加的数据)
+unshiftTree（targetParentId为目标节点的id，newNode为往该节点添加的数据）
 ```bash
 unshiftTree(tree, targetParentId, newNode);
 
@@ -66,7 +66,7 @@ const result = everyTree(tree, item => item.age >= 18)
 console.log(result)
 ```
 
-atTree(parentId为指定父节点的id，nodeIndex为子节点的索引，可传负数，和数组的at方法一样)
+atTree（parentId为指定父节点的id，nodeIndex为子节点的索引，可传负数，和数组的at方法一样）
 ```bash
 const result = atTree(tree, parentId, nodeIndex)
 
@@ -80,7 +80,14 @@ const result = indexOfTree(tree, targetId)
 console.log(result)
 ```
 
-nodeDepthMap(返回一个字典，键代表节点的id，值代表该节点在数据的第几层)
+atIndexOfTree（传入节点数据的下标数组，返回节点数据）
+```bash
+const result = atIndexOfTree(tree, [0, 1, 0])
+
+console.log(result)
+```
+
+nodeDepthMap（返回一个字典，键代表节点的id，值代表该节点在数据的第几层）
 ```bash
 const result = nodeDepthMap(tree)
 

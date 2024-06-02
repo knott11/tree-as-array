@@ -41,5 +41,33 @@ const tree = [
   },
 ];
 
-const re = indexOfTree(tree, '12e4wreeetg')
-console.log(re, 'poi')
+function atIndexOfTree(tree, path) {  
+  function traverse(nodes, indexPath) {  
+      if (!nodes || indexPath.length === 0) {  
+          return null;  
+      }  
+
+      const index = indexPath[0];  
+      const currentNode = nodes[index];  
+
+      if (!currentNode) {  
+          return null;  
+      }  
+
+      if (indexPath.length === 1) {  
+          return currentNode;  
+      }  
+
+      if (currentNode.children) {  
+          return traverse(currentNode.children, indexPath.slice(1));  
+      }  
+
+      return null;  
+  }  
+
+  return traverse(tree, path);  
+}
+
+const re = indexOfTree(tree, '0-0-1-0')
+const ree = atIndexOfTree(tree, re)
+console.log(ree, 'poi')

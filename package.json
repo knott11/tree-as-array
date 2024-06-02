@@ -1,6 +1,6 @@
 {
   "name": "tree-as-array",
-  "version": "2.4.12",
+  "version": "2.5.2",
   "description": "Use array methods to process tree-structured data",
   "main": "dist/index.min.js",
   "types": "dist/treeMethods.d.ts",
