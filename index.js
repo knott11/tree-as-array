@@ -45,7 +45,7 @@ export function pushTree(tree, rootId, newNode) {
   function findAndPushNode(nodes, targetId, newNode) {
     // 使用Array.some替代for循环，允许在找到匹配项时提前退出  
     return nodes.some(node => {
-      if (node.id === targetId) {
+      if (node?.id === targetId) {
         // 如果找到目标节点，则添加新节点并返回true  
         if (!node.children) {
           node.children = [];
@@ -72,7 +72,7 @@ export function unshiftTree(tree, rootId, newNode) {
   function findAndPushNode(nodes, targetId, newNode) {
     // 使用Array.some替代for循环，允许在找到匹配项时提前退出  
     return nodes.some(node => {
-      if (node.id === targetId) {
+      if (node?.id === targetId) {
         // 如果找到目标节点，则添加新节点并返回true  
         if (!node.children) {
           node.children = [];
@@ -129,7 +129,7 @@ export function atTree(tree, parentId, nodeIndex) {
   // 遍历树中的每个节点  
   for (const node of tree) {
     // 如果找到了对应的父节点  
-    if (node.id === parentId) {
+    if (node?.id === parentId) {
       // 如果nodeIndex为负数，则将其转换为正数索引  
       let adjustedNodeIndex = nodeIndex >= 0 ? nodeIndex : node.children.length + nodeIndex;
 
@@ -159,7 +159,7 @@ export function indexOfTree(tree, targetId) {
       const currentNode = nodes[i];
       path.push(i); // 将当前索引添加到路径中  
 
-      if (currentNode.id === targetId) {
+      if (currentNode?.id === targetId) {
         return path; // 找到目标，返回路径  
       }
 
@@ -214,7 +214,7 @@ export function nodeDepthMap(tree) {
     let depth = currentDepth || 1;
 
     // 存储当前节点的深度  
-    nodeDepths[node.id] = depth;
+    nodeDepths[node?.id] = depth;
 
     // 如果有子节点，递归计算它们的深度  
     if (node.children) {

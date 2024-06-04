@@ -13,11 +13,11 @@ npm i tree-as-array
 import { mapTree, filterTree } from 'tree-as-array'
 ```
 
-mapTree（遍历树形结构数据的方法）
+mapTree（遍历树形结构数据的方法，第三个参数可自定义children的名称）
 ```bash
 mapTree(tree, (item) => {
     console.log(item)
-})
+},'childrenName')
 ```
 
 filterTree
