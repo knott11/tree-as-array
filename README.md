@@ -1,5 +1,5 @@
 #### 介绍
-用数组的方法操作树形结构数据。目前已支持mapTree、filterTree、findTree、pushTree、unshiftTree、someTree、everyTree、atTree、indexOfTree和特殊方法atIndexOfTree、nodeDepthMap。(推荐安装最新版本)
+用数组的方法操作树形结构数据。目前已支持mapTree、filterTree、findTree、pushTree、unshiftTree、someTree、everyTree、atTree、indexOfTree和特殊方法atIndexOfTree、nodeDepthMap。(推荐安装最新版本，有问题发邮箱2682211705@qq.com)
 
 #### 安装教程
 ```bash
@@ -13,11 +13,46 @@ npm i tree-as-array
 import { mapTree, filterTree } from 'tree-as-array'
 ```
 
-mapTree（遍历树形结构数据的方法，第三个参数可自定义children的名称）
+示例数据
+```bash
+const tree = [
+      {
+        name: 'parent 1',
+        id: '0-0',
+        children: [
+          {
+            name: 'parent 1-0',
+            id: '0-0-0',
+            children: [
+              {
+                name: 'leaf',
+                id: '0-0-0-0',
+              },
+              {
+                name: 'leaf',
+                id: '0-0-333-1',
+              },
+              {
+                name: 'leaf',
+                id: '0-0-444-1',
+              },
+            ],
+          },
+          {
+            name: 'parent 1-1',
+            id: '0-0-1',
+            children: [{ name: 'leaf', id: '0-0-1-0', children: [{ name: 'qqqqq', id: '123124' }] }],
+          },
+        ],
+      },
+    ];
+```
+
+mapTree（遍历树形结构数据的方法，第三个参数可选，可自定义children的名称）
 ```bash
 mapTree(tree, (item) => {
     console.log(item)
-},'childrenName')
+})
 ```
 
 filterTree
