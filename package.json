@@ -1,6 +1,6 @@
 {
   "name": "tree-as-array",
-  "version": "2.5.5",
+  "version": "2.6.1",
   "description": "Use array methods to process tree-structured data",
   "main": "dist/index.min.js",
   "types": "dist/treeMethods.d.ts",
@@ -17,6 +17,8 @@
     "filter",
     "push",
     "unshift",
+    "pop",
+    "shift",
     "some",
     "every",
     "at",

@@ -4,6 +4,8 @@ declare module 'tree-as-array' {
   export function findTree<T>(tree: T | null, testFn: (node: T) => boolean): T | null;
   export function pushTree<T>(tree: T[], targetParentId: string | number, newNode: {} | {}[]): void;
   export function unshiftTree<T>(tree: T[], targetParentId: string | number, newNode: {} | {}[]): void;
+  export function popTree<T>(tree: T[], rootId: string | number): void;
+  export function shiftTree<T>(tree: T[], rootId: string | number): void;
   export function someTree<T>(trees: T[], predicate: (node: T) => boolean): boolean;
   export function everyTree<T>(trees: T[], predicate: (node: T) => boolean): boolean;
   export function atTree<T>(tree: T[], parentId: string | number, nodeIndex: number): T | null;

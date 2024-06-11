@@ -94,6 +94,58 @@ export function unshiftTree(tree, rootId, newNode) {
   }
 }
 
+export function popTree(tree, rootId) {  
+  // 内部递归函数，用于在树中查找并移除最后一个子节点  
+  function findAndPopNode(nodes, targetId) {  
+    // 使用Array.some替代for循环，允许在找到匹配项时提前退出  
+    return nodes.some(node => {  
+      if (node?.id === targetId) {  
+        // 如果找到目标节点，并且有子节点，则移除最后一个子节点并返回true  
+        if (node.children && node.children.length > 0) {  
+          node.children.pop();  
+        }  
+        return true; // 中断循环  
+      }  
+      // 如果没有找到，并且有子节点，则递归地在子节点中查找  
+      if (node.children) {  
+        return findAndPopNode(node.children, targetId);  
+      }  
+      return false; // 继续循环  
+    });  
+  }  
+  
+  // 调用内部函数开始搜索并移除节点  
+  if (!findAndPopNode(tree, rootId)) {  
+    console.error(`Node with ID ${rootId} not found in the tree, or it has no children to pop.`);  
+  }  
+}
+
+export function shiftTree(tree, rootId) {    
+  // 内部递归函数，用于在树中查找并移除第一个子节点    
+  function findAndShiftNode(nodes, targetId) {    
+    // 使用Array.some替代for循环，允许在找到匹配项时提前退出    
+    return nodes.some(node => {    
+      if (node?.id === targetId) {    
+        // 如果找到目标节点，并且有子节点，则移除第一个子节点并返回true    
+        if (node.children && node.children.length > 0) {    
+          node.children.shift();  // 使用shift()移除第一个子节点  
+        }    
+        return true; // 中断循环    
+      }    
+      // 如果没有找到，并且有子节点，则递归地在子节点中查找    
+      if (node.children) {    
+        return findAndShiftNode(node.children, targetId);    
+      }    
+      return false; // 继续循环    
+    });    
+  }    
+    
+  // 调用内部函数开始搜索并移除节点    
+  if (!findAndShiftNode(tree, rootId)) {    
+    console.error(`Node with ID ${rootId} not found in the tree, or it has no children to shift.`);    
+  }    
+}
+
 let isSome = false
 export function someTree(tree, filterFn) {
   for (let node of tree) {

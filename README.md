@@ -1,5 +1,5 @@
 #### 介绍
-用数组的方法操作树形结构数据。目前已支持mapTree、filterTree、findTree、pushTree、unshiftTree、someTree、everyTree、atTree、indexOfTree和特殊方法atIndexOfTree、nodeDepthMap。(推荐安装最新版本，有问题发邮箱2682211705@qq.com)
+用数组的方法操作树形结构数据。目前已支持mapTree、filterTree、findTree、pushTree、unshiftTree、popTree、shiftTree、someTree、everyTree、atTree、indexOfTree和特殊方法atIndexOfTree、nodeDepthMap。(推荐安装最新版本，有问题发邮箱2682211705@qq.com，如果觉得不错，请在github仓库里点颗星⭐，谢谢)
 
 #### 安装教程
 ```bash
@@ -83,6 +83,20 @@ console.log(tree)
 unshiftTree（targetParentId为目标节点的id，newNode为往该节点添加的数据）
 ```bash
 unshiftTree(tree, targetParentId, newNode);
+
+console.log(tree)
+```
+
+popTree（rootId为目标节点的id，此方法可删除rootId下的最后一个子节点）
+```bash
+popTree(tree, rootId);
+
+console.log(tree)
+```
+
+shiftTree（rootId为目标节点的id，此方法可删除rootId下的第一个子节点）
+```bash
+shiftTree(tree, rootId);
 
 console.log(tree)
 ```

@@ -1,4 +1,4 @@
-import { mapTree, filterTree, findTree, pushTree, unshiftTree, someTree, atTree,indexOfTree } from './index.js'
+import { mapTree, filterTree, findTree, pushTree, unshiftTree, someTree, atTree,indexOfTree,popTree ,shiftTree} from './index.js'
 
 const tree = [
   {
@@ -35,7 +35,7 @@ const tree = [
       {
         name: 'parent 1-1',
         id: '0-0-1',
-        children: [{ name: 'leaf', id: '0-0-1-0' }],
+        children: [{ name: 'leaf', id: '0-0-1-0' },{ name: 'leaffff', id: '0-0-bsdv1-0' }],
       },
     ],
   },
@@ -68,6 +68,6 @@ function atIndexOfTree(tree, path) {
   return traverse(tree, path);  
 }
 
-const re = indexOfTree(tree, '0-0-1-0')
-const ree = atIndexOfTree(tree, re)
-console.log(ree, 'poi')
+const re = shiftTree(tree, '0-0-1')
+// const ree = atIndexOfTree(tree, re)
+console.log(JSON.stringify(tree), 'poi')
