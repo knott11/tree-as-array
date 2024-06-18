@@ -1,13 +1,14 @@
 {
   "name": "tree-as-array",
-  "version": "2.6.1",
+  "version": "3.0.9",
   "description": "Use array methods to process tree-structured data",
-  "main": "dist/index.min.js",
-  "types": "dist/treeMethods.d.ts",
+  "main": "dist/tree-as-array.cjs", 
+  "module": "dist/tree-as-array.js",
+  "types": "src/index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "terser index.js -o dist/index.min.js --compress --mangle",
-    "test": "node test.mjs"
+    "build": "vite build && terser dist/tree-as-array.js -o dist/tree-as-array.js --compress --mangle",
+    "test": "node src/test.mjs"
   },
   "keywords": [
     "tree",
@@ -25,17 +26,18 @@
     "indexOf"
   ],
   "author": "Wang Xiping",
-  "license": "MIT",
+  "license": "Apache",
   "repository": {
     "type": "git",
     "url": "https://github.com/WangXiping1/tree-as-array"
   },
   "homepage": "https://github.com/WangXiping1/tree-as-array",
   "files": [
-    "dist/index.js",
-    "dist/treeMethods.d.ts"
+    "dist",
+    "src/index.d.ts"
   ],
   "devDependencies": {
-    "terser": "^5.31.0"
+    "terser": "^5.31.0",
+    "vite": "^5.2.13"
   }
 }
