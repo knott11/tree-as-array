@@ -1,5 +1,5 @@
 #### 介绍
-用数组的方法操作树形结构数据。目前已支持mapTree、filterTree、findTree、pushTree、unshiftTree、popTree、shiftTree、someTree、everyTree、atTree、indexOfTree和特殊方法atIndexOfTree、nodeDepthMap。每个方法的最后一个参数可以自定义children和id的属性名。(目前稳定版本为2.6.1，版本3使用方法有变动，有问题发邮箱2682211705@qq.com，如果觉得不错，请在github仓库里点颗星⭐，谢谢)
+用数组的方法操作树形结构数据。目前已支持mapTree、filterTree、findTree、pushTree、unshiftTree、popTree、shiftTree、someTree、everyTree、atTree、indexOfTree和特殊方法atIndexOfTree、nodeDepthMap。每个方法的最后一个参数可以自定义children和id的属性名。license改成Apache只是为了保护专利权，一般不影响使用。(目前稳定版本为2.6.1，版本3使用方法有变动，有问题发邮箱2682211705@qq.com，如果觉得不错，请在github仓库里点颗星⭐，谢谢)
 
 #### 安装教程
 ```bash
