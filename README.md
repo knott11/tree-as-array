@@ -1,5 +1,5 @@
 #### 介绍
-用数组的方法操作树形结构数据。目前已支持mapTree、filterTree、findTree、pushTree、unshiftTree、popTree、shiftTree、someTree、everyTree、atTree、indexOfTree和特殊方法atIndexOfTree、nodeDepthMap。每个方法的最后一个参数可以自定义children和id的属性名。license改成Apache只是为了保护专利权，一般不影响使用。(目前稳定版本为2.6.1，版本3使用方法有变动，有问题发邮箱2682211705@qq.com，如果觉得不错，请在github仓库里点颗星⭐，谢谢)
+用数组的方法操作树形结构数据。目前已支持mapTree、filterTree、findTree、pushTree、unshiftTree、popTree、shiftTree、someTree、everyTree、atTree、indexOfTree和特殊方法atIndexOfTree、nodeDepthMap和dedupTree。每个方法的最后一个参数可以自定义children和id的属性名。
 
 #### 安装教程
 ```bash
@@ -48,7 +48,7 @@ const treeData = [
     ];
 ```
 
-mapTree（遍历树形结构数据的方法）
+mapTree（遍历树结构数据的方法）
 ```bash
 tree.mapTree(treeData, (item) => {
     console.log(item)
@@ -139,6 +139,13 @@ console.log(result)
 nodeDepthMap（返回一个字典，键代表节点的id，值代表该节点在数据的第几层）
 ```bash
 const result = tree.nodeDepthMap(treeData)
+
+console.log(result)
+```
+
+dedupTree（树结构对象数组去重方法，第一个参数为需要去重的数据，第二个参数为以哪个键去重）
+```bash
+const result = tree.dedupTree(treeData, 'id')
 
 console.log(result)
 ```

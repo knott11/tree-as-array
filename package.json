@@ -1,6 +1,6 @@
 {
   "name": "tree-as-array",
-  "version": "3.0.11",
+  "version": "3.0.12",
   "description": "Use array methods to process tree-structured data",
   "main": "dist/tree-as-array.cjs", 
   "module": "dist/tree-as-array.js",
@@ -23,7 +23,8 @@
     "some",
     "every",
     "at",
-    "indexOf"
+    "indexOf",
+    "deduplication"
   ],
   "author": "Wang Xiping",
   "license": "Apache",

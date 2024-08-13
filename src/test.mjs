@@ -42,7 +42,7 @@ const treee = [
   },
 ];
 
-const re = tree.atTree(treee,'0-0-0',-1, { children: 'children', id: 'key' })
+const re = tree.dedupTree(treee,'name' )
 // const ree = atIndexOfTree(tree, re)
 // console.log(JSON.stringify(tree), 'poi')
 console.log(re)

@@ -11,7 +11,6 @@ const tree = {
       return [mappedItem, ...childrenResult];
     });
   },
-
   filterTree(tree, filterFn, fieldNames = { children: 'children', id: 'id' }) {
     const result = [];
     function filterHelper(nodes) {
@@ -208,23 +207,23 @@ const tree = {
     return null; // 如果没有找到，返回null  
   },
 
-  indexOfTree(tree, targetId, fieldNames = { children: 'children', id: 'id' }) {  
-    function search(nodes, targetId, path = []) {  
+  indexOfTree(tree, targetId, fieldNames = { children: 'children', id: 'id' }) {
+    function search(nodes, targetId, path = []) {
       for (const node of nodes) { // 使用 for...of 循环代替 some，以便直接返回路径  
         const currentNodePath = [...path, nodes.indexOf(node)]; // 注意这里使用了 nodes.indexOf(node)，这假设节点在数组中是唯一的  
-        if (node?.[fieldNames.id] === targetId) {  
+        if (node?.[fieldNames.id] === targetId) {
           return currentNodePath; // 直接返回找到的路径  
-        }  
-        if (node?.[fieldNames.children]) {  
-          const childResult = search(node?.[fieldNames.children], targetId, currentNodePath);  
-          if (childResult) {  
+        }
+        if (node?.[fieldNames.children]) {
+          const childResult = search(node?.[fieldNames.children], targetId, currentNodePath);
+          if (childResult) {
             return childResult; // 如果子节点搜索有结果，返回找到的路径  
-          }  
-        }  
-      }  
+          }
+        }
+      }
       return null; // 如果没有找到目标节点，返回 null  
-    }  
-    
+    }
+
     return search(tree, targetId); // 从根节点开始搜索  
   },
 
@@ -277,6 +276,38 @@ const tree = {
     }
 
     return nodeDepths; // 返回节点深度对象  
+  },
+
+  dedupTree(tree, key) {
+    const uniqueArray = [];
+    const seenKeys = new Set();
+
+    const traverse = (items) => {
+      for (let item of items) {
+        // 如果是一个对象，并且它的key还没有被看到过  
+        if (typeof item === 'object' && item !== null && !seenKeys.has(item[key])) {
+          seenKeys.add(item[key]);
+          const uniqueItem = { ...item }; // 创建一个浅拷贝  
+
+          // 遍历对象的所有属性  
+          Object.keys(uniqueItem).forEach(prop => {
+            // 如果属性值是数组，则递归处理这个数组  
+            if (Array.isArray(uniqueItem[prop])) {
+              uniqueItem[prop] = this.dedupTree(uniqueItem[prop], key); // 递归去重  
+            }
+          });
+
+          uniqueArray.push(uniqueItem);
+        }
+        // 如果item本身是一个数组，也需要递归处理  
+        else if (Array.isArray(item)) {
+          traverse(item);
+        }
+      }
+    }
+
+    traverse(tree);
+    return uniqueArray;
   },
 };
 
