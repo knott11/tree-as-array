@@ -7,7 +7,7 @@ export default defineConfig({
     lib: {  
       entry: path.resolve(__dirname, 'src/index.js'), // 指向你的 TypeScript 入口文件  
       name: 'TreeAsArray', // UMD 全局变量名（如果需要的话）  
-      formats: ['es', 'cjs'], // 生成 ES 模块和 CommonJS 模块  
+      formats: ['es'], // 生成 ES 模块s
     },  
     rollupOptions: {  
       // 这里通常不需要额外的 Rollup 配置，除非你有特殊需求  

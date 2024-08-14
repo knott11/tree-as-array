@@ -14,26 +14,26 @@ const tree = {
   filterTree(tree, filterFn, fieldNames = { children: 'children', id: 'id' }) {
     const result = [];
     function filterHelper(nodes) {
-      for (let node of nodes) {
-        if (filterFn(node)) {
+      nodes.map((node, index) => {
+        if (filterFn(node, index)) {
           result.push(node);
         }
         if (node?.[fieldNames.children]) {
           filterHelper(node?.[fieldNames.children]);
         }
-      }
+      })
     }
     filterHelper(tree);
     return result;
   },
 
-  findTree(treeNodes, conditionFn, fieldNames = { children: 'children', id: 'id' }) {
-    for (const node of treeNodes) {
+  findTree(tree, conditionFn, fieldNames = { children: 'children', id: 'id' }) {
+    for (const node of tree) {
       if (conditionFn(node)) {
         return node; // 如果当前节点满足条件，返回该节点  
       }
       if (node?.[fieldNames.children]) {
-        const foundInChildren = tree.findTree(node?.[fieldNames.children], conditionFn, fieldNames); // 递归在子节点中查找  
+        const foundInChildren = this.findTree(node?.[fieldNames.children], conditionFn, fieldNames); // 递归在子节点中查找  
         if (foundInChildren) {
           return foundInChildren; // 如果在子节点中找到，返回找到的节点  
         }
@@ -45,21 +45,24 @@ const tree = {
   pushTree(tree, rootId, newNode, fieldNames = { children: 'children', id: 'id' }) {
     // 内部递归函数，用于在树中查找并插入新节点  
     function findAndPushNode(nodes, targetId, newNode, fieldNames) {
-      return nodes.some(node => {
+      for (let node of nodes) {
         if (node?.[fieldNames.id] === targetId) {
-          // 如果找到目标节点，则添加新节点并返回true  
+          // 如果找到目标节点，则添加新节点  
           if (!node?.[fieldNames.children]) {
             node[fieldNames.children] = [];
           }
-          node?.[fieldNames.children].push(newNode);
+          node[fieldNames.children].push(newNode);
           return true; // 中断循环  
         }
         // 如果没有找到，并且有子节点，则递归地在子节点中查找  
         if (node?.[fieldNames.children]) {
-          return findAndPushNode(node[fieldNames.children], targetId, newNode, fieldNames);
+          const found = findAndPushNode(node[fieldNames.children], targetId, newNode, fieldNames);
+          if (found) {
+            return true; // 如果在子节点中找到，则中断主循环  
+          }
         }
-        return false; // 继续循环  
-      });
+      }
+      return false; // 继续循环  
     }
 
     // 调用内部函数开始搜索并添加节点  
@@ -70,27 +73,29 @@ const tree = {
 
   unshiftTree(tree, rootId, newNode, fieldNames = { children: 'children', id: 'id' }) {
     // 内部递归函数，用于在树中查找并插入新节点  
-    function findAndPushNode(nodes, targetId, newNode, fieldNames) {
-      // 使用Array.some替代for循环，允许在找到匹配项时提前退出  
-      return nodes.some(node => {
+    function findAndUnshiftNode(nodes, targetId, newNode, fieldNames) {
+      for (let node of nodes) {
         if (node?.[fieldNames.id] === targetId) {
-          // 如果找到目标节点，则添加新节点并返回true  
+          // 如果找到目标节点，则添加新节点  
           if (!node?.[fieldNames.children]) {
             node[fieldNames.children] = [];
           }
-          node?.[fieldNames.children].unshift(newNode);
+          node[fieldNames.children].unshift(newNode);
           return true; // 中断循环  
         }
         // 如果没有找到，并且有子节点，则递归地在子节点中查找  
         if (node?.[fieldNames.children]) {
-          return findAndPushNode(node[fieldNames.children], targetId, newNode, fieldNames);
+          const found = findAndUnshiftNode(node[fieldNames.children], targetId, newNode, fieldNames);
+          if (found) {
+            return true; // 如果在子节点中找到，则中断主循环  
+          }
         }
-        return false; // 继续循环  
-      });
+      }
+      return false; // 继续循环  
     }
 
     // 调用内部函数开始搜索并添加节点  
-    if (!findAndPushNode(tree, rootId, newNode, fieldNames)) {
+    if (!findAndUnshiftNode(tree, rootId, newNode, fieldNames)) {
       console.error(`Node with ID ${rootId} not found in the tree.`);
     }
   },
@@ -98,21 +103,23 @@ const tree = {
   popTree(tree, rootId, fieldNames = { children: 'children', id: 'id' }) {
     // 内部递归函数，用于在树中查找并移除最后一个子节点  
     function findAndPopNode(nodes, targetId, fieldNames) {
-      // 使用Array.some替代for循环，允许在找到匹配项时提前退出  
-      return nodes.some(node => {
+      for (let node of nodes) {
         if (node?.[fieldNames.id] === targetId) {
-          // 如果找到目标节点，并且有子节点，则移除最后一个子节点并返回true  
-          if (node?.[fieldNames.children] && node?.[fieldNames.children].length > 0) {
-            node?.[fieldNames.children].pop();
+          // 如果找到目标节点，并且有子节点，则移除最后一个子节点  
+          if (node?.[fieldNames.children] && node[fieldNames.children].length > 0) {
+            node[fieldNames.children].pop();
           }
           return true; // 中断循环  
         }
         // 如果没有找到，并且有子节点，则递归地在子节点中查找  
         if (node?.[fieldNames.children]) {
-          return findAndPopNode(node[fieldNames.children], targetId, fieldNames);
+          const found = findAndPopNode(node[fieldNames.children], targetId, fieldNames);
+          if (found) {
+            return true; // 如果在子节点中找到，则中断主循环  
+          }
         }
-        return false; // 继续循环  
-      });
+      }
+      return false; // 继续循环  
     }
 
     // 调用内部函数开始搜索并移除节点  
@@ -122,28 +129,30 @@ const tree = {
   },
 
   shiftTree(tree, rootId, fieldNames = { children: 'children', id: 'id' }) {
-    // 内部递归函数，用于在树中查找并移除第一个子节点    
+    // 内部递归函数，用于在树中查找并移除最后一个子节点  
     function findAndShiftNode(nodes, targetId, fieldNames) {
-      // 使用Array.some替代for循环，允许在找到匹配项时提前退出    
-      return nodes.some(node => {
+      for (let node of nodes) {
         if (node?.[fieldNames.id] === targetId) {
-          // 如果找到目标节点，并且有子节点，则移除第一个子节点并返回true    
-          if (node?.[fieldNames.children] && node?.[fieldNames.children].length > 0) {
-            node?.[fieldNames.children].shift();  // 使用shift()移除第一个子节点  
+          // 如果找到目标节点，并且有子节点，则移除最后一个子节点  
+          if (node?.[fieldNames.children] && node[fieldNames.children].length > 0) {
+            node[fieldNames.children].shift();
           }
-          return true; // 中断循环    
+          return true; // 中断循环  
         }
-        // 如果没有找到，并且有子节点，则递归地在子节点中查找    
+        // 如果没有找到，并且有子节点，则递归地在子节点中查找  
         if (node?.[fieldNames.children]) {
-          return findAndShiftNode(node[fieldNames.children], targetId, fieldNames);
+          const found = findAndShiftNode(node[fieldNames.children], targetId, fieldNames);
+          if (found) {
+            return true; // 如果在子节点中找到，则中断主循环  
+          }
         }
-        return false; // 继续循环    
-      });
+      }
+      return false; // 继续循环  
     }
 
-    // 调用内部函数开始搜索并移除节点    
+    // 调用内部函数开始搜索并移除节点  
     if (!findAndShiftNode(tree, rootId, fieldNames)) {
-      console.error(`Node with ID ${rootId} not found in the tree, or it has no children to shift.`);
+      console.error(`Node with ID ${rootId} not found in the tree, or it has no children to pop.`);
     }
   },
 

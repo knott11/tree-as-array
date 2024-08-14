@@ -87,6 +87,7 @@ declare const tree: {
 
   dedupTree<T extends TreeNode<any>>(
     tree: T[],
+    key: string,
   ): T | null;
 };
 

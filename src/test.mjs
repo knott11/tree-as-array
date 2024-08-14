@@ -42,7 +42,7 @@ const treee = [
   },
 ];
 
-const re = tree.dedupTree(treee,'name' )
+const re = tree.findTree(treee,((i,idx)=>{return i.key.includes('bsdv')}) )
 // const ree = atIndexOfTree(tree, re)
 // console.log(JSON.stringify(tree), 'poi')
 console.log(re)

@@ -1,8 +1,7 @@
 {
   "name": "tree-as-array",
-  "version": "3.0.12",
+  "version": "3.0.16",
   "description": "Use array methods to process tree-structured data",
-  "main": "dist/tree-as-array.cjs", 
   "module": "dist/tree-as-array.js",
   "types": "src/index.d.ts",
   "type": "module",
@@ -30,9 +29,9 @@
   "license": "Apache",
   "repository": {
     "type": "git",
-    "url": "https://github.com/WangXiping1/tree-as-array"
+    "url": "https://github.com/knott11/tree-as-array"
   },
-  "homepage": "https://github.com/WangXiping1/tree-as-array",
+  "homepage": "https://github.com/knott11/tree-as-array",
   "files": [
     "dist",
     "src/index.d.ts"
